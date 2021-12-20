@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>出校凭证</title>
+		<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript">
+		window.onload = function(){
+		var m = 29;  //分
+		var s = 59;  //秒
+		var countdown = document.getElementById("daojishi");
+		getCountdown();
+		setInterval(function(){ getCountdown() },1000);
+		function getCountdown (){
+		countdown.innerHTML = "<span>"+m+"</span>分<span>"+s+"</span>秒";
+		if( m == 0 && s == 0 ){
+		alert("倒计时结束");
+		m = 29;
+		s = 59;
+		}else if( m >= 0 ){
+		if( s > 0 ){
+		s--;
+		}else if( s == 0 ){
+		m--;
+		s = 59;
+		             }
+		         }
+		     }
+		 }
+	</script>
+	
+	</head>
+	<body >
+	<table border="0" cellspacing="" cellpadding="" background="../img/chuxiao.jpg"
+	width="1080px" height="1974px" align="center">
+		<tr><th>
+		
+		<div style=" position: absolute; left: 825px; top: 180px;" >
+			<font size="6.5" color="white"><div id="daojishi"></div></font>
+			
+		</div>
+		
+		<div style=" position: absolute; left: 240px; top: 335px;">
+			<img src="../img/123.gif" width="615px" height="330px" >
+		</div>
+		
+		
+		
+		<div class="header-time"
+		style=" position: absolute; left: 430px; top: 480px;">
+		    <font style="font-size: 58px; font-family: 隶书; " color="11b111"><span id="time"></span></font>
+		</div>
+		
+		<div 
+		style=" position: absolute; left: 572px; top: 422.5px;">
+			<font style="font-size: 58px; font-family: 隶书; " color="11b111"><p id="day"></p></font>
+		</div>
+		
+		
+		<div
+		style=" position: absolute; left: 652px; top: 422.5px;">
+			<font style="font-size: 58px; font-family: 隶书; " color="11b111"><p id="cc"></p></font>
+		</div>
+		
+		
+		</th></tr>
+	</table>
+	
+	<script>
+	function getTime() {
+	    var myDate = new Date();
+	    var myYear = myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+	    var myMonth = myDate.getMonth() + 1; //获取当前月份(0-11,0代表1月)
+	    var myToday = myDate.getDate(); //获取当前日(1-31)
+	    var myDay = myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
+	    var myHour = myDate.getHours(); //获取当前小时数(0-23)
+	    var myMinute = myDate.getMinutes(); //获取当前分钟数(0-59)
+	    var mySecond = myDate.getSeconds(); //获取当前秒数(0-59)
+	    var week = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+	    var nowTime;
+	
+	    nowTime = myYear;
+		day =fillZero(myMonth);
+		cc=fillZero(myToday) ;
+	    //console.log(nowTime);
+	    $('#time').html(nowTime);
+		$('#day').html(day);
+		$('#cc').html(cc);
+	};
+	
+	function fillZero(str) {
+	    var realNum;
+	    if (str < 10) {
+	        realNum = '0' + str;
+	    } else {
+	        realNum = str;
+	    }
+	    return realNum;
+	}
+	setInterval(getTime, 1000);
+	</script>
+	
+	</body>
+</html>
